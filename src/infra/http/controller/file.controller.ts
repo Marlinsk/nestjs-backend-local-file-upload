@@ -1,6 +1,8 @@
 import {
   Controller,
   Post,
+  Param,
+  Patch,
   UseInterceptors,
   UploadedFile,
 } from '@nestjs/common';
@@ -16,10 +18,10 @@ import { RemoveFileFromBaseUseCase } from '@application/usecases/RemoveFileFromB
 @Controller('')
 export class FileController {
   constructor(
-    private editFileDataUseCase: EditUploadFileUseCase,
-    private listAllFilesUseCase: ListAllFilesUseCase,
-    private removeFileFromBaseUseCase: RemoveFileFromBaseUseCase,
     private uploadFileUseCase: UploadFileUseCase,
+    private listAllFilesUseCase: ListAllFilesUseCase,
+    private editFileDataUseCase: EditUploadFileUseCase,
+    private removeFileFromBaseUseCase: RemoveFileFromBaseUseCase,
   ) {}
 
   @Post('')
@@ -35,6 +37,31 @@ export class FileController {
     const { filename, path, size } = file;
 
     const data = await this.uploadFileUseCase.execute({
+      file: filename,
+      filePath: path,
+      size: size,
+    });
+
+    return { file: FileViewModel.toHTTP(data) };
+  }
+
+  @Patch(':id')
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: './uploads',
+        filename: FileHelper.randomName,
+      }),
+    }),
+  )
+  async editFile(
+    @Param('id') id: string,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    const { filename, path, size } = file;
+
+    const data = await this.editFileDataUseCase.execute({
+      id,
       file: filename,
       filePath: path,
       size: size,

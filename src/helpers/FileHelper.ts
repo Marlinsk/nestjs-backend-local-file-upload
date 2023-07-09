@@ -1,5 +1,10 @@
+import { NotFoundException } from '@nestjs/common';
 import { Request } from 'express';
+import { unlink } from 'fs';
 import { extname } from 'path';
+import { promisify } from 'util';
+
+const unlinkAsync = promisify(unlink);
 
 export class FileHelper {
   static randomName(request: Request, file: Express.Multer.File, cb: any) {
@@ -11,5 +16,14 @@ export class FileHelper {
     const nameFile = cb(null, `${randomName}${extname(file.originalname)}`);
 
     return nameFile;
+  }
+
+  static async removeFile(file: string) {
+    try {
+      await unlinkAsync(file);
+    } catch (error) {
+      throw new NotFoundException('File not found!');
+    }
+    return true;
   }
 }
