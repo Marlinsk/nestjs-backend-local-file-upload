@@ -1,4 +1,4 @@
-import { FileHelper } from '@helpers/FileHelper';
+import { Helper } from '@helpers/helper';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { FileRepository } from '../repositories/FileRepository';
 import { EditUploadFileModel } from '@core/domain/models/EditFileDataModel';
@@ -24,7 +24,7 @@ export class EditUploadFileUseCase {
         updatedAt: new Date(),
       });
     } else {
-      await FileHelper.removeFile(fileExists.filePath);
+      await Helper.removeFile(fileExists.filePath);
 
       return await this.repository.save({
         id,

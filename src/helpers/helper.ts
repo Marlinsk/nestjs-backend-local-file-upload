@@ -6,7 +6,7 @@ import { promisify } from 'util';
 
 const unlinkAsync = promisify(unlink);
 
-export class FileHelper {
+export class Helper {
   static randomName(request: Request, file: Express.Multer.File, cb: any) {
     const randomName = Array(32)
       .fill(null)
@@ -18,9 +18,9 @@ export class FileHelper {
     return nameFile;
   }
 
-  static async removeFile(file: string) {
+  static async removeFile(filePath: string) {
     try {
-      await unlinkAsync(file);
+      await unlinkAsync(filePath);
     } catch (error) {
       throw new NotFoundException('File not found!');
     }

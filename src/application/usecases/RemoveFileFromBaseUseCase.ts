@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { FileRepository } from '../repositories/FileRepository';
+import { Helper } from '@helpers/helper';
 
 @Injectable()
 export class RemoveFileFromBaseUseCase {
@@ -11,6 +12,8 @@ export class RemoveFileFromBaseUseCase {
     if (!fileExists) {
       throw new NotFoundException('Not found!');
     }
+
+    await Helper.removeFile(fileExists.filePath);
 
     await this.repository.delete(id);
   }
