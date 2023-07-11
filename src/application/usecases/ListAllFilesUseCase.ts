@@ -5,7 +5,25 @@ import { FileRepository } from '../repositories/FileRepository';
 export class ListAllFilesUseCase {
   constructor(private repository: FileRepository) {}
 
-  async execute() {
-    return await this.repository.findAll();
+  async execute(page: number, size: number) {
+    const { results, totalItems } = await this.repository.findAll({
+      page,
+      size,
+    });
+
+    const totalPages = Math.ceil(totalItems / size) - 1;
+    const currentPage = Number(page);
+
+    return {
+      results,
+      info: {
+        length: totalItems,
+        size: size,
+        lastPage: totalPages,
+        page: currentPage,
+        startIndex: currentPage * size,
+        endIndex: currentPage * size + (size - 1),
+      },
+    };
   }
 }

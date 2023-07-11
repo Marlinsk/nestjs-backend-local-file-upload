@@ -6,10 +6,11 @@ import {
   Delete,
   UseInterceptors,
   UploadedFile,
+  Get,
+  Request,
 } from '@nestjs/common';
 import { diskStorage } from 'multer';
 import { Helper } from '@helpers/helper';
-import { FileViewModel } from '../view/file.view.model';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadFileUseCase } from '@application/usecases/UploadFileUseCase';
 import { ListAllFilesUseCase } from '@application/usecases/ListAllFilesUseCase';
@@ -25,7 +26,15 @@ export class FileController {
     private removeFileFromBaseUseCase: RemoveFileFromBaseUseCase,
   ) {}
 
-  @Post('')
+  @Get('')
+  async listFiles(@Request() request) {
+    return await this.listAllFilesUseCase.execute(
+      request.query.hasOwnProperty('page') ? request.query.page : 1,
+      request.query.hasOwnProperty('size') ? request.query.size : 16,
+    );
+  }
+
+  @Post()
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
@@ -43,7 +52,7 @@ export class FileController {
       size: size,
     });
 
-    return { file: FileViewModel.toHTTP(data) };
+    return { file: data };
   }
 
   @Patch(':id')
@@ -68,7 +77,7 @@ export class FileController {
       size: size,
     });
 
-    return { file: FileViewModel.toHTTP(data) };
+    return { file: data };
   }
 
   @Delete(':id')

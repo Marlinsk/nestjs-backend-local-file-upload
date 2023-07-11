@@ -3,6 +3,7 @@ import { File } from '@core/domain/entities/File';
 import { PrismaService } from '../prisma.service';
 import { PrismaFileMapper } from '../mappers/prisma.file.mapper';
 import { FileRepository } from '@application/repositories/FileRepository';
+import { FindAllParameter } from '@application/@types/FindAllParameter';
 
 @Injectable()
 export class PrismaFileRepository implements FileRepository {
@@ -41,14 +42,18 @@ export class PrismaFileRepository implements FileRepository {
     return file;
   }
 
-  async findAll(): Promise<File[] | null> {
-    const file = await this.prisma.file.findMany();
+  async findAll({ page, size }: FindAllParameter) {
+    const results = await this.prisma.file.findMany({
+      skip: (page - 1) * size,
+      take: Number(size),
+      orderBy: {
+        id: 'desc',
+      },
+    });
 
-    if (!file) {
-      return null;
-    }
+    const totalItems = await this.prisma.file.count();
 
-    return file;
+    return { results, totalItems };
   }
 
   async delete(id: string): Promise<void> {
