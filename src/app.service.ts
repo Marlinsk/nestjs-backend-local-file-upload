@@ -1,9 +1,9 @@
+import { File } from './entities/File';
+import { Helper } from '@helpers/helper';
+import { UploadFileModel } from './models/UploadFileModel';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { EditUploadFileModel } from './models/EditFileDataModel';
-import { UploadFileModel } from './models/UploadFileModel';
-import { File } from './entities/File';
-import { FileRepository } from './repositories/file.repository';
-import { Helper } from '@helpers/helper';
+import { FileRepository } from './prisma/repositories/file.repository';
 
 @Injectable()
 export class AppService {

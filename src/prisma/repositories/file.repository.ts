@@ -1,7 +1,7 @@
+import { File } from '../../entities/File';
 import { Injectable } from '@nestjs/common';
-import { File } from '../entities/File';
-import { PrismaService } from '../prisma/prisma.service';
-import { PrismaFileMapper } from '../prisma/mappers/prisma.file.mapper';
+import { PrismaService } from '../prisma.service';
+import { PrismaFileMapper } from '../mappers/prisma.file.mapper';
 
 @Injectable()
 export class FileRepository {
