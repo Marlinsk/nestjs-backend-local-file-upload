@@ -1,40 +1,32 @@
 import {
   Controller,
-  Post,
+  Delete,
+  Get,
   Param,
   Patch,
-  Delete,
-  UseInterceptors,
-  UploadedFile,
-  Get,
   Request,
+  Post,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
-import { diskStorage } from 'multer';
+import { AppService } from './app.service';
 import { Helper } from '@helpers/helper';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { UploadFileUseCase } from '@application/usecases/UploadFileUseCase';
-import { ListAllFilesUseCase } from '@application/usecases/ListAllFilesUseCase';
-import { EditUploadFileUseCase } from '@application/usecases/EditUploadFileUseCase';
-import { RemoveFileFromBaseUseCase } from '@application/usecases/RemoveFileFromBaseUseCase';
+import { diskStorage } from 'multer';
 
 @Controller('')
-export class FileController {
-  constructor(
-    private uploadFileUseCase: UploadFileUseCase,
-    private listAllFilesUseCase: ListAllFilesUseCase,
-    private editFileDataUseCase: EditUploadFileUseCase,
-    private removeFileFromBaseUseCase: RemoveFileFromBaseUseCase,
-  ) {}
+export class AppController {
+  constructor(private readonly service: AppService) {}
 
   @Get('')
   async listFiles(@Request() request) {
-    return await this.listAllFilesUseCase.execute(
+    return await this.service.listAllFiles(
       request.query.hasOwnProperty('page') ? request.query.page : 1,
       request.query.hasOwnProperty('size') ? request.query.size : 16,
     );
   }
 
-  @Post()
+  @Post('')
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
@@ -46,7 +38,7 @@ export class FileController {
   async uploadFile(@UploadedFile() file: Express.Multer.File) {
     const { filename, path, size } = file;
 
-    const data = await this.uploadFileUseCase.execute({
+    const data = await this.service.uploadFile({
       file: filename,
       filePath: path,
       size: size,
@@ -70,7 +62,7 @@ export class FileController {
   ) {
     const { filename, path, size } = file;
 
-    const data = await this.editFileDataUseCase.execute({
+    const data = await this.service.editFile({
       id,
       file: filename,
       filePath: path,
@@ -82,6 +74,6 @@ export class FileController {
 
   @Delete(':id')
   async remove(@Param('id') id: string) {
-    await this.removeFileFromBaseUseCase.execute(id);
+    await this.service.excludeFile(id);
   }
 }

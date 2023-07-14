@@ -1,5 +1,5 @@
 import { File as RawFile } from '@prisma/client';
-import { File } from '@core/domain/entities/File';
+import { File } from '../../entities/File';
 
 export class PrismaFileMapper {
   static toPrisma(data: File) {
