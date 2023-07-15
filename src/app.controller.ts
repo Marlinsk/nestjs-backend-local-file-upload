@@ -19,11 +19,17 @@ export class AppController {
   constructor(private readonly service: AppService) {}
 
   @Get('')
-  async listFiles(@Request() request) {
-    return await this.service.listAllFiles(
+  listFiles(@Request() request) {
+    return this.service.listAllFiles(
       request.query.hasOwnProperty('page') ? request.query.page : 1,
       request.query.hasOwnProperty('size') ? request.query.size : 16,
     );
+  }
+
+  @Get(':id')
+  getFile(@Param('id') id: string) {
+    const data = this.service.getFile(id);
+    return { file: data };
   }
 
   @Post('')
@@ -35,10 +41,10 @@ export class AppController {
       }),
     }),
   )
-  async uploadFile(@UploadedFile() file: Express.Multer.File) {
+  uploadFile(@UploadedFile() file: Express.Multer.File) {
     const { filename, path, size } = file;
 
-    const data = await this.service.uploadFile({
+    const data = this.service.uploadFile({
       file: filename,
       filePath: path,
       size: size,
@@ -56,13 +62,10 @@ export class AppController {
       }),
     }),
   )
-  async editFile(
-    @Param('id') id: string,
-    @UploadedFile() file: Express.Multer.File,
-  ) {
+  editFile(@Param('id') id: string, @UploadedFile() file: Express.Multer.File) {
     const { filename, path, size } = file;
 
-    const data = await this.service.editFile({
+    const data = this.service.editFile({
       id,
       file: filename,
       filePath: path,
@@ -73,7 +76,7 @@ export class AppController {
   }
 
   @Delete(':id')
-  async remove(@Param('id') id: string) {
-    await this.service.excludeFile(id);
+  remove(@Param('id') id: string) {
+    this.service.excludeFile(id);
   }
 }

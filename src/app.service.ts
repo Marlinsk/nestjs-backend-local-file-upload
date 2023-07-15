@@ -59,6 +59,16 @@ export class AppService {
     }
   }
 
+  async getFile(id: string) {
+    const fileExists = await this.repository.findById(id);
+
+    if (!fileExists) {
+      throw new NotFoundException('Not found!');
+    }
+
+    return fileExists;
+  }
+
   async listAllFiles(page: number, size: number) {
     const { results, totalItems } = await this.repository.findAll({
       page,
