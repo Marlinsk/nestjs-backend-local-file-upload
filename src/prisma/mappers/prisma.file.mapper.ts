@@ -1,8 +1,8 @@
 import { File as RawFile } from '@prisma/client';
-import { File } from '../../entities/File';
+import { FileEntity } from '../../entities/File';
 
 export class PrismaFileMapper {
-  static toPrisma(data: File) {
+  static toPrisma(data: FileEntity) {
     return {
       id: data.id,
       file: data.file,
@@ -13,8 +13,8 @@ export class PrismaFileMapper {
     };
   }
 
-  static toDomain(raw: RawFile): File {
-    return new File({
+  static toEntity(raw: RawFile): FileEntity {
+    return new FileEntity({
       id: raw.id,
       file: raw.file,
       filePath: raw.filePath,

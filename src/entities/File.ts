@@ -1,4 +1,4 @@
-export class File {
+export class FileEntity {
   readonly id: string;
   file: string;
   filePath: string;

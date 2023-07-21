@@ -1,4 +1,4 @@
-import { File } from '../../entities/File';
+import { FileEntity } from '../../entities/File';
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
 import { PrismaFileMapper } from '../mappers/prisma.file.mapper';
@@ -7,7 +7,7 @@ import { PrismaFileMapper } from '../mappers/prisma.file.mapper';
 export class FileRepository {
   constructor(private prisma: PrismaService) {}
 
-  async create(data: File): Promise<File> {
+  async create(data: FileEntity): Promise<FileEntity> {
     const raw = PrismaFileMapper.toPrisma(data);
 
     return await this.prisma.file.create({
@@ -15,7 +15,7 @@ export class FileRepository {
     });
   }
 
-  async save(data: File): Promise<File> {
+  async save(data: FileEntity): Promise<FileEntity> {
     const raw = PrismaFileMapper.toPrisma(data);
 
     return this.prisma.file.update({
@@ -40,7 +40,7 @@ export class FileRepository {
     return { results, totalItems };
   }
 
-  async findById(id: string): Promise<File | null> {
+  async findById(id: string): Promise<FileEntity | null> {
     const file = await this.prisma.file.findUnique({
       where: {
         id: id,

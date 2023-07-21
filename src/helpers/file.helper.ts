@@ -6,7 +6,7 @@ import { promisify } from 'util';
 
 const unlinkAsync = promisify(unlink);
 
-export class Helper {
+export class FileHelper {
   static randomName(request: Request, file: Express.Multer.File, cb: any) {
     const randomName = Array(32)
       .fill(null)

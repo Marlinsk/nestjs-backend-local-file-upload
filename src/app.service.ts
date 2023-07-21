@@ -1,5 +1,5 @@
-import { File } from './entities/File';
-import { Helper } from '@helpers/helper';
+import { FileEntity } from './entities/File';
+import { FileHelper } from '@helpers/file.helper';
 import { UploadFileModel } from './models/UploadFileModel';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { EditUploadFileModel } from './models/EditFileDataModel';
@@ -12,7 +12,7 @@ export class AppService {
   async uploadFile(data: UploadFileModel) {
     const { file, filePath, size } = data;
 
-    const uploadData = new File({
+    const uploadData = new FileEntity({
       file: file,
       filePath: filePath,
       size: size,
@@ -44,7 +44,7 @@ export class AppService {
 
       return data;
     } else {
-      await Helper.removeFile(fileExists.filePath);
+      await FileHelper.removeFile(fileExists.filePath);
 
       const data = await this.repository.save({
         id,
@@ -98,7 +98,7 @@ export class AppService {
       throw new NotFoundException('Not found!');
     }
 
-    await Helper.removeFile(fileExists.filePath);
+    await FileHelper.removeFile(fileExists.filePath);
 
     await this.repository.delete(id);
   }
