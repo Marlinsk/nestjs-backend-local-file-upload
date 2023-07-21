@@ -4,3 +4,9 @@ O grande recurso dessa aplicação é servir como um tipo de canal para salvar a
 ## Descrição
 A aplicação tem dois componentes de funcionalidade, sendo elas o com o banco de dados, onde é salvo os dados importantes do arquivo como por exemplo o nome e o caminho do arquivo, isso é feito para auxiliar na gestão do arquivo por meio de requisição HTTP, tendo esses dados salvos em um banco de dados, fica fácil do back-end buscar esse arquivo na pasta. O outro componente serve para salvar o arquivo na pasta de upload, esse componente na ocasião pega o nome original do arquivo e renomeia a partir de um conjunto de caracteres e depois o salva na pasta de uploads, isso é feito na ocasião para não ocorrer problemas de nome de arquivo igual dentro do sistema. A forma como esses arquivos são geridos são a partir dos dados salvos no banco de dados.
 
+## Configurando o projeto em sua máquina
+Comando para clonar o projeto em sua máquina.
+```
+git clone https://github.com/Marlinsk/upload-file-nestjs-application.git
+```
+
