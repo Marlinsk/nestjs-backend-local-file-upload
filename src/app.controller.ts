@@ -10,7 +10,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { AppService } from './app.service';
-import { Helper } from '@helpers/helper';
+import { FileHelper } from '@helpers/file.helper';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 
@@ -37,7 +37,7 @@ export class AppController {
     FileInterceptor('file', {
       storage: diskStorage({
         destination: './uploads',
-        filename: Helper.randomName,
+        filename: FileHelper.randomName,
       }),
     }),
   )
@@ -58,7 +58,7 @@ export class AppController {
     FileInterceptor('file', {
       storage: diskStorage({
         destination: './uploads',
-        filename: Helper.randomName,
+        filename: FileHelper.randomName,
       }),
     }),
   )
