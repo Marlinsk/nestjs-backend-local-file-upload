@@ -15,14 +15,14 @@ npm install
 ```
 > Finalizando isso vamos para a próxima etapa que é gerar o banco de dados utilizando o docker compose.
 
-## Criação do Banco de Dados com Docker 🐳
+## Criação do banco de dados com Docker 🐳
 Execute o seguinte comando no terminal para criar uma imagem com o banco de dados PostgreSQL:
 ```
 docker-compose -f docker-compose.yml up -d
 ```
 > Após a execução a imagem do banco de dados da aplicação será gerada no seu Docker.
 
-## Criando a estrutura básica do Banco de Dados 🐘
+## Criando a estrutura básica do banco de dados 🐘
 Crie um arquivo **.env** e cole o schema abaixo para se conectar com o banco de dados:
 ```
 DATABASE_URL="postgresql://prisma:prisma@localhost:5433/upfiledb?schema=public"
