@@ -52,7 +52,7 @@ Rota de upload do arquivo
 
 Para poder fazer a requisição nesta rota via **Postman,** acesse a aba body e clique em form-data, feito isso basta colocar o nome do campo na coluna **Key** para file e mudar o tipo dele para arquivo, feito isso aparecerá na coluna **Value** o **Select files**, clique nele e selecione o arquivo que deseja fazer upload, após isso só fazer a requisição. 
 
-<img align="center" src="https://github.com/Marlinsk/upload-file-nestjs-application/assets/56139126/56308b39-e327-413b-aedd-7fa1d678cc9c">
+<img align="center" src="https://github.com/Marlinsk/upload-file-nestjs-application/assets/56139126/56308b39-e327-413b-aedd-7fa1d678cc9c"/>
 
 **GET** List all files
 
