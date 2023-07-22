@@ -33,8 +33,10 @@ npx prisma db push
 ```
 
 ## Rodando a aplicação 🚀
+**Obs.:** Antes de por a aplicação para rodar, certifique-se que a imagem do banco de dados docker esteja rodando, caso contrário ocorrerá um erro. 
+
 Para executar o servidor rode o seguinte comando:
 ```
 npm run start:dev
 ```
-> Se estiver tudo ok aparecerá a seguinte mensagem no terminal: Server starting 🚀 http://localhost:3077. Certifique-se que a imagem do banco de dados docker esteja rodando, caso contrário ocorrerá um erro. 
+> Se estiver tudo ok aparecerá a seguinte mensagem no terminal: Server starting 🚀 http://localhost:3077. 
