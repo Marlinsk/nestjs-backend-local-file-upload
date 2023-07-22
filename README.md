@@ -39,7 +39,7 @@ Para executar o servidor rode o seguinte comando:
 ```
 npm run start:dev
 ```
-> Se estiver tudo ok aparecerá a seguinte mensagem no terminal: Server starting 🚀 http://localhost:3077. 
+> Se estiver tudo ok aparecerá a seguinte mensagem no terminal: Server starting 🚀 http://localhost:3000. 
 
 ## Rotas HTTP da aplicação 🚏
 Descrição das rotas da aplicação junto da instrução de como fazer a requisição pelo **Postman**.
@@ -52,7 +52,7 @@ Rota de upload do arquivo
 
 Para poder fazer a requisição nesta rota via **Postman,** acesse a aba body e clique em form-data, feito isso basta colocar o nome do campo na coluna **Key** para file e mudar o tipo dele para arquivo, feito isso aparecerá na coluna **Value** o **Select files**, clique nele e selecione o arquivo que deseja fazer upload, após isso só fazer a requisição. 
 
-![image](https://github.com/Marlinsk/upload-file-nestjs-application/assets/56139126/64043c98-4115-4732-a618-ad0d38222c5e)
+<img align="center" src="https://github.com/Marlinsk/upload-file-nestjs-application/blob/main/assets/255339216-64043c98-4115-4732-a618-ad0d38222c5e.png">
 
 **Obs.:** Em outras ferramentas, basta procurar uma opção de form-data na aba de corpo da requisição.
 
@@ -64,7 +64,7 @@ Lista todos os dados dos arquivos salvos na pasta **uploads**
 
 Basta fazer uma requisição http do tipo **GET** sem nenhum parâmetro na url
 
-![image](https://github.com/Marlinsk/upload-file-nestjs-application/assets/56139126/552c7d7f-95be-4ed7-9e19-ece127df52f6)
+<img align="center" src="https://github.com/Marlinsk/upload-file-nestjs-application/blob/main/assets/255339439-552c7d7f-95be-4ed7-9e19-ece127df52f6.png">
 
 **GET** Get file
 
@@ -74,7 +74,7 @@ Busca um arquivo salvo na pasta **uploads** pelo id
 
 Faça uma requisição http do tipo **GET** com o id na url
 
-![image](https://github.com/Marlinsk/upload-file-nestjs-application/assets/56139126/8da5448f-4edf-4213-a96e-a2f45abb8dad)
+<img align="center" src="https://github.com/Marlinsk/upload-file-nestjs-application/blob/main/assets/255340143-8da5448f-4edf-4213-a96e-a2f45abb8dad.png">
 
 **PATCH** Change file
 
@@ -84,7 +84,7 @@ Substitui o arquivo salvo com aquele id
 
 Repita o mesmo processo ensinado na requisição POST, mas passando o id na url do arquivo que deseja mudar, feito isso faça a requisição http no tipo PATCH.
 
-![image](https://github.com/Marlinsk/upload-file-nestjs-application/assets/56139126/bd16e0d5-272c-49b4-95c4-d56c20a6a37b)
+<img align="center" src="https://github.com/Marlinsk/upload-file-nestjs-application/blob/main/assets/255339159-bd16e0d5-272c-49b4-95c4-d56c20a6a37b.png">
 
 **DELETE** Remove file
 
@@ -94,4 +94,4 @@ Remove o arquivo a partir do id dele registrado no banco
 
 Faça a requisição passando o id, fazendo isso o arquivo é removido junto com o dado salvo no banco de dados.
 
-![image](https://github.com/Marlinsk/upload-file-nestjs-application/assets/56139126/43c6f738-b0d1-42d7-ab12-9e60e7d8c423)
+<img align="center" src="https://github.com/Marlinsk/upload-file-nestjs-application/blob/main/assets/255340245-43c6f738-b0d1-42d7-ab12-9e60e7d8c423.png">
