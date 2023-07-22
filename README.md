@@ -54,6 +54,8 @@ Para poder fazer a requisição nesta rota via **Postman,** acesse a aba body e 
 
 <img align="center" src="https://github.com/Marlinsk/upload-file-nestjs-application/assets/56139126/56308b39-e327-413b-aedd-7fa1d678cc9c"/>
 
+**Obs.:** Em outras ferramentas, basta procurar uma opção de form-data na aba de corpo da requisição.
+
 **GET** List all files
 
 Lista todos os dados dos arquivos salvos na pasta **uploads**
