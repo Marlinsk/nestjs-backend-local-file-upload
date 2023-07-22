@@ -32,7 +32,7 @@ Para criar as tabelas no banco de dados, execute o seguinte comando:
 npx prisma db push
 ```
 
-## Executand o projeto 🚀
+## Rodando o projeto 🚀
 Para executar o servidor rode o seguinte comando:
 ```
 npm run start:dev
