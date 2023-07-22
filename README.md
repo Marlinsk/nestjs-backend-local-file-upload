@@ -53,3 +53,35 @@ Rota de upload do arquivo
 Para poder fazer a requisição nesta rota via **Postman,** acesse a aba body e clique em form-data, feito isso basta colocar o nome do campo na coluna **Key** para file e mudar o tipo dele para arquivo, feito isso aparecerá na coluna **Value** o **Select files**, clique nele e selecione o arquivo que deseja fazer upload, após isso só fazer a requisição. 
 
 <img align="center" src="https://github.com/Marlinsk/upload-file-nestjs-application/assets/56139126/56308b39-e327-413b-aedd-7fa1d678cc9c">
+
+**GET** List all files
+
+Lista todos os dados dos arquivos salvos na pasta **uploads**
+
+> /
+
+Basta fazer uma requisição http do tipo **GET** sem nenhum parâmetro na url
+
+**GET** Get file
+
+Busca um arquivo salvo na pasta **uploads** pelo id
+
+> /:id
+
+Faça uma requisição http do tipo **GET** com o id na url
+
+**PATCH** Change file
+
+Substitui o arquivo salvo com aquele id
+
+> /:id
+
+Repita o mesmo processo ensinado na requisição POST, mas passando o id na url do arquivo que deseja mudar, feito isso faça a requisição http no tipo PATCH.
+
+**DELETE** Remove file
+
+Remove o arquivo a partir do id dele registrado no banco
+
+> /:id
+
+Faça a requisição passando o id, fazendo isso o arquivo é removido junto com o dado salvo no banco de dados.
