@@ -13,7 +13,7 @@ Após clonar o repositório instale as dependências executando comando abaixo:
 ```
 npm install
 ```
-Finalizando isso vamos para a próxima etapa que é gerar o banco de dados utilizando o docker compose.
+> Finalizando isso vamos para a próxima etapa que é gerar o banco de dados utilizando o docker compose.
 
 ## Criação do Banco de Dados com Docker 🐳
 Execute o seguinte comando no terminal para criar uma imagem com o banco de dados PostgreSQL:
