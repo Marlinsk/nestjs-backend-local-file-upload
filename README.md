@@ -37,3 +37,4 @@ Para executar o servidor rode o seguinte comando:
 ```
 npm run start:dev
 ```
+> Se estiver tudo ok aparecerá a seguinte mensagem no terminal: Server starting 🚀 http://localhost:3077. Certifique-se que a imagem do banco de dados docker esteja rodando, caso contrário ocorrerá um erro. 
