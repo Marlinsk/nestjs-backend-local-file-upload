@@ -59,7 +59,7 @@ export class AppService {
     }
   }
 
-  async getFile(id: string) {
+  async getFile(id: string): Promise<FileEntity> {
     const fileExists = await this.repository.findById(id);
 
     if (!fileExists) {
